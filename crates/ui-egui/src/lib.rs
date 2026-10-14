@@ -40,6 +40,7 @@ pub mod dock;
 mod dock_shared;
 mod dock_ui;
 pub mod frames;
+pub mod freeandiy;
 pub mod graphics_notice;
 pub mod header;
 pub mod i18n;
@@ -268,7 +269,7 @@ pub(crate) const EXPORT_SAVE_DIALOGS: [(&str, &str, &str); 7] = [
     ("file.exportFcpxml", "FCPXML", "fcpxml"),
     ("file.exportOtio", "OpenTimelineIO", "otio"),
     ("file.exportAle", "Avid Log Exchange", "ale"),
-    ("file.exportSelectionProject", "FilmCraft Project", "fcproj"),
+    ("file.exportSelectionProject", "FreeANDIY Film Project", "fcproj"),
 ];
 
 pub struct FilmcraftApp {
@@ -1933,8 +1934,8 @@ impl FilmcraftApp {
     fn error_window(&mut self, ctx: &egui::Context) {
         let Some(msg) = self.ui_error.clone() else { return };
         let mut close = false;
-        egui::Window::new(tl!("FilmCraft hit an error"))
-            .id(egui::Id::new("FilmCraft hit an error"))
+        egui::Window::new(tl!("FreeANDIY Film hit an error"))
+            .id(egui::Id::new("FreeANDIY Film hit an error"))
             .collapsible(false)
             .resizable(false)
             .pivot(egui::Align2::CENTER_CENTER)

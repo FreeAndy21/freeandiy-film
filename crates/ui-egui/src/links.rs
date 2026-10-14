@@ -1,28 +1,23 @@
-//! Community and project links (Help menu, About dialog, header Discord button, Home screen).
-//!
-//! FilmCraft is part of the ArtCraft family: the community lives on the ArtCraft Discord, every
-//! app has a page on the ArtCraft website and a public GitHub repository.
+//! Project links (Help menu, About dialog, Home screen): the website, this app's page and its
+//! public GitHub repository.
 
 /// The app's short name, used in the website and repository URLs.
 pub const APP: &str = "filmcraft";
 
-/// The ArtCraft community Discord.
-pub const DISCORD: &str = "https://discord.gg/artcraft";
-/// The ArtCraft website.
-pub const WEBSITE: &str = "https://getartcraft.com";
-/// FilmCraft's page on the ArtCraft website.
-pub const APP_PAGE: &str = "https://getartcraft.com/apps/filmcraft";
+/// The FreeANDIY website.
+pub const WEBSITE: &str = "https://freeandiy.freeandy.agency";
+/// FilmCraft's page on the FreeANDIY website.
+pub const APP_PAGE: &str = "https://freeandiy.freeandy.agency/film";
 /// FilmCraft's source repository.
-pub const GITHUB: &str = "https://github.com/storytold/filmcraft";
+pub const GITHUB: &str = "https://github.com/FreeAndy21/freeandiy-film";
 /// New issue on FilmCraft's repository.
-pub const ISSUES: &str = "https://github.com/storytold/filmcraft/issues";
+pub const ISSUES: &str = "https://github.com/FreeAndy21/freeandiy-film/issues";
 
 /// (command id, label, url) for every link, in menu order.
-pub const ALL: [(&str, &str, &str); 5] = [
-    ("help.discord", "Join the ArtCraft Discord…", DISCORD),
-    ("help.website", "ArtCraft Website", WEBSITE),
-    ("help.appPage", "FilmCraft on getartcraft.com", APP_PAGE),
-    ("help.github", "FilmCraft on GitHub", GITHUB),
+pub const ALL: [(&str, &str, &str); 4] = [
+    ("help.website", "FreeANDIY website", WEBSITE),
+    ("help.appPage", "FreeANDIY Film on freeandiy.freeandy.agency", APP_PAGE),
+    ("help.github", "FreeANDIY Film on GitHub", GITHUB),
     ("help.reportIssue", "Report an Issue…", ISSUES),
 ];
 
@@ -49,7 +44,7 @@ pub fn menu_hint(command: &str) -> Option<String> {
         match command {
             "help.revealLogFiles" => tl!("Saves this session's log and shows it in your file manager."),
             "help.systemCompatibilityReport" => tl!("Shows a report on this computer."),
-            "app.about" => tl!("Shows the version, community links and credits in a FilmCraft window."),
+            "app.about" => tl!("Shows the version, community links and credits in a FreeANDIY Film window."),
             _ => return None,
         }
         .to_string(),
@@ -125,11 +120,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn urls_follow_the_artcraft_scheme() {
-        assert_eq!(APP_PAGE, format!("{WEBSITE}/apps/{APP}"));
-        assert_eq!(GITHUB, format!("https://github.com/storytold/{APP}"));
+    fn urls_are_this_apps_pages() {
+        assert!(APP_PAGE.starts_with(WEBSITE));
+        assert!(GITHUB.starts_with("https://github.com/"));
         assert!(ALL.iter().all(|(id, _, u)| id.starts_with("help.") && u.starts_with("https://")));
-        assert_eq!(url_for("help.discord"), Some(DISCORD));
+        assert_eq!(url_for("help.discord"), None);
         assert_eq!(url_for("help.nope"), None);
     }
 

@@ -202,12 +202,19 @@ fn is_asset(path: &str) -> bool {
     std::path::Path::new(path).extension().and_then(|e| e.to_str()).is_some_and(|e| ASSET_EXT.contains(&e.to_ascii_lowercase().as_str()))
 }
 
+/// FreeANDIY: paths the fork owns (its sources, the app icon and DMG art copied from them). They
+/// are attributed in NOTICE's FreeANDIY section and `freeandiy/assets/brand/LICENSE-brand.txt`
+/// (the brand assets are deliberately not open source), not by sidecars.
+fn freeandiy_owned(path: &str) -> bool {
+    ["freeandiy/", "assets/app-icon/", "packaging/macos/dmg/"].iter().any(|p| path.starts_with(p))
+}
+
 fn assets() -> Result<(), String> {
     let files = repo_files()?;
     let index = std::fs::read_to_string("ATTRIBUTION.md").map_err(|e| format!("ATTRIBUTION.md: {e}"))?;
     let mut errors = Vec::new();
     let mut n = 0;
-    for f in files.iter().filter(|f| is_asset(f)) {
+    for f in files.iter().filter(|f| is_asset(f) && !freeandiy_owned(f)) {
         n += 1;
         let lower = f.to_ascii_lowercase();
         if lower.contains("adobe") || lower.contains("premiere") {

@@ -1,22 +1,15 @@
-//! The ArtCraft wordmark (first-party trademark, used with permission; see `docs/brand/` and
-//! AGENTS.md §1.8), decoded once and kept as a texture.
-
-const LOGO_LIGHT_INK: &[u8] = include_bytes!("../../../docs/brand/artcraft-logo-white.png");
-const LOGO_DARK_INK: &[u8] = include_bytes!("../../../docs/brand/artcraft-logo.png");
+//! The FreeANDIY wordmark (`crate::freeandiy`; © Free Andy Agency, not open source), decoded once
+//! and kept as a texture.
 
 /// The wordmark for a dark (`dark = true`) or light UI: light ink on dark themes. Its aspect
 /// ratio is width / height of the returned texture.
 pub fn wordmark(ctx: &egui::Context, dark: bool) -> Option<egui::TextureHandle> {
-    let id = egui::Id::new(("artcraft-wordmark", dark));
+    let id = egui::Id::new(("freeandiy-wordmark", dark));
     if let Some(t) = ctx.data(|d| d.get_temp::<egui::TextureHandle>(id)) {
         return Some(t);
     }
-    let bytes = if dark { LOGO_LIGHT_INK } else { LOGO_DARK_INK };
-    let img = image::load_from_memory_with_format(bytes, image::ImageFormat::Png).ok()?;
-    // Large enough to stay sharp at 2x for the sizes we draw (≤ 320 pt wide).
-    let img = img.resize(1024, 1024, image::imageops::FilterType::Lanczos3).to_rgba8();
-    let color = egui::ColorImage::from_rgba_unmultiplied([img.width() as usize, img.height() as usize], img.as_raw());
-    let tex = ctx.load_texture("artcraft-wordmark", color, egui::TextureOptions::LINEAR);
+    let color = crate::freeandiy::wordmark_image(dark)?;
+    let tex = ctx.load_texture("freeandiy-wordmark", color, egui::TextureOptions::LINEAR);
     ctx.data_mut(|d| d.insert_temp(id, tex.clone()));
     Some(tex)
 }

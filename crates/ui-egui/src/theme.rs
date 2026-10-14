@@ -241,7 +241,7 @@ impl Tokens {
             gap: 4.0,
             tab_h: 32.0,
         };
-        match kind {
+        let tokens = match kind {
             ThemeKind::Dark => dark,
             ThemeKind::Medium => Tokens {
                 app_bg: Color32::from_rgb(20, 20, 20),
@@ -330,7 +330,8 @@ impl Tokens {
                 tl_ruler_text: Color32::from_rgb(80, 80, 80),
                 ..dark
             },
-        }
+        };
+        crate::freeandiy::tokens(tokens)
     }
 
     /// Settings ▸ Appearance on top of a theme: the highlight colour (selections, primary buttons,
@@ -427,6 +428,7 @@ pub fn install(ctx: &egui::Context, t: &Tokens) {
     fonts.families.entry(FontFamily::Monospace).or_default().insert(0, "jbmono".into());
     fonts.families.insert(FontFamily::Name("semibold".into()), vec!["inter-semibold".into(), "inter".into()]);
     fonts.families.insert(FontFamily::Name("medium".into()), vec!["inter-medium".into(), "inter".into()]);
+    crate::freeandiy::ui_fonts(&mut fonts);
     // Japanese before Chinese: the two share code points, and Japanese text must keep Japanese
     // glyph forms; Chinese faces still cover the hanzi Japanese fonts lack
     add_craft_fonts(&mut fonts);
@@ -496,6 +498,7 @@ pub fn apply_visuals(ctx: &egui::Context, t: &Tokens) {
     v.widgets.active.fg_stroke = Stroke::new(1.0, t.tab_text_active);
     v.widgets.open.bg_fill = t.hover;
     v.widgets.open.weak_bg_fill = t.hover;
+    crate::freeandiy::visuals(&mut v);
     ctx.set_visuals(v);
     ctx.global_style_mut(|s| {
         s.spacing.item_spacing = egui::vec2(6.0, 4.0);

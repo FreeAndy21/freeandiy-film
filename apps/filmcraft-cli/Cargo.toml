@@ -8,8 +8,9 @@ license.workspace = true
 [lints]
 workspace = true
 
+# FreeANDIY: the executable carries the product name; the package keeps upstream's.
 [[bin]]
-name = "filmcraft-cli"
+name = "freeandiy-film-cli"
 path = "src/main.rs"
 
 [features]
