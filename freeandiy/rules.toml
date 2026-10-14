@@ -500,3 +500,10 @@ include = ["packaging/**", "apps/*/build.rs"]
 find = "Learning Machines LLC"
 replace = "{{brand.owner}}"
 min = 1
+
+[[replace]]
+name = "links test: the extra link it opens is the issue tracker (FreeANDIY has no Discord link)"
+include = ["crates/ui-egui/src/links.rs"]
+regex = '\bDISCORD\b'
+replace = "ISSUES"
+min = 2
