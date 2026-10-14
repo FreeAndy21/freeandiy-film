@@ -1,8 +1,8 @@
 asset:        favicon.png
-title:        FilmCraft web app icon (favicon and loading image), 128 px
-author:       Brandon Thomas (FilmCraft owner), for the FilmCraft project
-source:       original work (drawn by the owner in ArtCraft, then vectorised)
-license:      MIT OR Apache-2.0
-license-file: assets/app-icon/LICENSE.txt
-added:        2026-10-02 by Claude (agent) for Brandon Thomas
-notes:        Rendered from assets/app-icon/filmcraft.svg with resvg by packaging/icons.sh. Replaces the earlier hand-drawn favicon.svg.
+title:        FreeANDIY Film web app icon (favicon and loading image), 128 px
+author:       Free Andy Agency
+source:       original work (the angel Andy on the app colour; FreeANDIY meta repository, tools/make_icons.py)
+license:      All rights reserved, Free Andy Agency (not covered by the code licence)
+license-file: freeandiy/assets/brand/LICENSE-brand.txt
+added:        2026-10-14 by FreeANDIY
+notes:        Copied from freeandiy/assets/icons/film/hicolor/128.png by the rebrand.
