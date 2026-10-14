@@ -17,5 +17,5 @@ ci_tests = "true"
 [check]
 # check-branding.sh: extra allowed strings (regex) and Rust paths where the upstream name may stay
 # in string literals (git pathspecs, space-separated).
-allow = ""
+allow = "FilmCraftGenerator"
 rs_exclude = ":!xtask/**"

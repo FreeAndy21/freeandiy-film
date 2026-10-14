@@ -1,0 +1,8 @@
+asset:        favicon.png
+title:        FreeANDIY Film web app icon (favicon and loading image), 128 px
+author:       Free Andy Agency
+source:       original work (the angel Andy on the app colour; FreeANDIY meta repository, tools/make_icons.py)
+license:      All rights reserved, Free Andy Agency (not covered by the code licence)
+license-file: freeandiy/assets/brand/LICENSE-brand.txt
+added:        2026-10-14 by FreeANDIY
+notes:        Copied from freeandiy/assets/icons/film/hicolor/128.png by the rebrand.

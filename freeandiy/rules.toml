@@ -404,6 +404,10 @@ from = "freeandiy/assets/dmg"
 to = "packaging/macos/dmg"
 
 [[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/hicolor/128.png"
+to = "apps/filmcraft-web/web/favicon.png"
+
+[[copy]]
 from = "freeandiy/templates/freeandiy.rs"
 to = "crates/ui-egui/src/freeandiy.rs"
 
