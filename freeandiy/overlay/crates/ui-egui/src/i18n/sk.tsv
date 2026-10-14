@@ -1,0 +1,244 @@
+# Slovak (sk) catalog. Added by FreeANDIY (Free Andy Agency), 2026; MIT OR Apache-2.0 like the
+# other catalogs. Columns, separated by a TAB:  context <TAB> source <TAB> translation
+#
+#   context  empty          a plain UI string; `source` is the English text in the code
+#            anything else  a disambiguating context passed to `tr_ctx`
+#   escapes  \n  \t  \\  inside a column. `{name}` placeholders must appear in both columns.
+#   lines starting with # and blank lines are ignored.
+#
+# Clean-room: every entry was written from the plain meaning of the English text using ordinary
+# Slovak video-editing vocabulary (stopa, sekvencia, klip, strih, prehrávacia hlava ...). No
+# proprietary localisation resource, string table or product UI was consulted or copied.
+# Coverage: menus and common labels shared with the other FreeANDIY apps; the rest stays English.
+
+	Appearance	Vzhľad
+	Arrange	Usporiadať
+	Blue	Modrá
+	Captions	Titulky
+	Clear	Vymazať
+	Clear Guides	Vymazať vodidlá
+	Close	Zavrieť
+	Copy	Kopírovať
+	Cut	Vystrihnúť
+	Distribute	Rozmiestniť
+	Edit	Úpravy
+	Edit Original	Upraviť originál
+	Editing	Úpravy
+	Effects	Efekty
+	Export	Exportovať
+	File	Súbor
+	Find Next	Nájsť ďalšie
+	Find…	Nájsť…
+	Green	Zelená
+	Group	Zoskupiť
+	Help	Pomocník
+	History	História
+	Info	Informácie
+	Insert	Vložiť
+	Keyboard Shortcuts…	Klávesové skratky…
+	Language	Jazyk
+	Left	Vľavo
+	Light	Svetlo
+	Link	Prepojenie
+	Lock Guides	Zamknúť vodidlá
+	Modify	Upraviť
+	New	Nový
+	New Layer	Nová vrstva
+	Open Recent	Otvoriť nedávne
+	Clear Recent Files	Vymazať nedávne súbory
+	Recent	Nedávne
+	Paste	Prilepiť
+	Preferences	Nastavenia
+	Properties	Vlastnosti
+	Purple	Fialová
+	Red	Červená
+	Redo	Znova
+	Report an Issue…	Nahlásiť problém…
+	Revert	Vrátiť na uložené
+	Review	Revízia
+	Right	Vpravo
+	Save	Uložiť
+	Save As…	Uložiť ako…
+	Save a Copy…	Uložiť kópiu…
+	Save as Template…	Uložiť ako šablónu…
+	Select	Výber
+	Show Rulers	Zobraziť pravítka
+	Text	Text
+	Timeline	Časová os
+	Tools	Nástroje
+	Trim…	Orezať okraje…
+	Undo	Späť
+	Ungroup	Zrušiť zoskupenie
+	Vertical Text	Zvislý text
+	View	Zobraziť
+	Window	Okno
+	Yellow	Žltá
+	Zoom In	Priblížiť
+	Zoom Out	Oddialiť
+	Home	Domov
+	Import	Importovať
+	Cancel	Zrušiť
+	OK	OK
+	Amount	Množstvo
+	Version {version}	Verzia {version}
+	{n} min ago	pred {n} min
+	{n} h ago	pred {n} h
+	Clear All	Vymazať všetko
+	Done	Hotovo
+	Yes	Áno
+	No	Nie
+	Open	Otvoriť
+	Close Panel	Zavrieť panel
+	Close All	Zavrieť všetko
+	Type	Text
+	Scale	Mierka
+	Delete	Odstrániť
+	Align	Zarovnať
+	Reset	Obnoviť
+	Release	Uvoľniť
+	Automatic	Automaticky
+	Page {page} of {pages}	Strana {page} z {pages}
+	Previous page	Predchádzajúca strana
+	Next page	Ďalšia strana
+	Presets	Predvoľby
+	Histogram	Histogram
+	Opacity	Krytie
+	Video	Video
+	Don't Save	Neukladať
+	File Name	Názov súboru
+	File Path	Cesta k súboru
+	Browse…	Prehľadávať…
+	Preview	Náhľad
+	Options	Možnosti
+	Calculate	Prepočítať
+	Mix	Miešanie
+	Color	Farba
+	Temperature	Teplota
+	Tint	Nádych
+	Saturation	Sýtosť
+	Exposure	Expozícia
+	Contrast	Kontrast
+	Highlights	Svetlá
+	Shadows	Tiene
+	Whites	Biele
+	Blacks	Čierne
+	Adjustments	Úpravy obrazu
+	Sharpen	Zaostrenie
+	Vibrance	Živosť
+	Midtones	Stredné tóny
+	Hue	Odtieň
+	Blur	Rozostrenie
+	Midpoint	Stred
+	Roundness	Zaoblenie
+	Feather	Prelínanie
+	Save Preset…	Uložiť predvoľbu…
+	Align Left	Zarovnať doľava
+	Align Right	Zarovnať doprava
+	Font	Písmo
+	Font Size	Veľkosť písma
+	Alignment	Zarovnanie
+	Tracking	Sledovanie
+	Underline	Podčiarknutie
+	OpenType	OpenType
+	Shape	Tvar
+	Size	Veľkosť
+	Fill	Vyplniť
+	Apply	Použiť
+	Remove	Odstrániť
+	Show All	Zobraziť všetko
+	Center	Na stred
+	Guides	Vodidlá
+	Vertical	Zvisle
+	Horizontal	Vodorovne
+	Stack	Stoh
+	Adjust	Upraviť
+	Advanced	Rozšírené
+	Auto	Automaticky
+	Background Color	Farba pozadia
+	Balance	Vyváženie
+	Black	Čierna
+	Blend	Prechod tvarov
+	Blending Mode	Režim prelínania
+	Borders	Orámovanie
+	Brush Strokes	Ťahy štetcom
+	Clarity	Čírosť
+	Comment	Komentár
+	Crop	Orezať
+	Current Time	Aktuálny čas
+	Curve	Krivka
+	Custom	Vlastné
+	Dark	Tmavý
+	Delete…	Odstrániť…
+	Description	Popis
+	Distort	Deformácia
+	Error	Chyba
+	Fill Color	Farba výplne
+	Filter	Filter
+	Format	Formát
+	Gamut Warning	Upozornenie na farebný rozsah
+	General	Všeobecné
+	Generate	Generovať
+	Grid	Mriežka
+	Grow	Rozšíriť
+	Height	Výška
+	Layers	Vrstvy
+	Location	Umiestnenie
+	Luminance	Jas
+	Magenta	Purpurová
+	Mirror	Zrkadlové
+	Mode	Režim
+	Narrow	Úzke
+	Noise	Šum
+	Normal	Normálne
+	Orientation	Orientácia
+	Output	Výstup
+	Panels	Panely
+	Path	Cesta
+	Perspective	Perspektíva
+	Radial	Kruhové
+	Radius	Polomer
+	Shapes	Tvary
+	Skew	Skosiť
+	Slice	Rez
+	Slices	Rezy
+	Smooth	Vyhladiť
+	Special	Špeciálne
+	Stroke Color	Farba ťahu
+	Stylize	Štylizácia
+	Time	Čas
+	Tolerance	Tolerancia
+	Transform	Transformovať
+	Wet	Vlhkosť
+	White	Biela
+	Width	Šírka
+	Zoom	Lupa
+	All	Všetko
+	Keyboard Shortcuts	Klávesové skratky
+	Export…	Exportovať…
+	Ready	Pripravené
+	Title	Názov
+	Image	Obraz
+	Channels	Kanály
+	16 bit	16-bitový
+	Opened {url}	Otvorené: {url}
+	Show	Zobraziť
+	Sort	Zoradiť
+	Table	Tabuľka
+	Company	Spoločnosť
+	About	O aplikácii
+	Contributors	Prispievatelia
+	Models	Modely
+	Next Appearance Mode	Ďalší režim vzhľadu
+	Sync with system	Podľa systému
+	Linear Gradient	Lineárny prechod
+	Dock Panel	Ukotviť panel
+	Sequence	Sekvencia
+	Clip	Klip
+	Markers	Značky
+	Graphics	Grafika
+	Report an issue	Nahlásiť problém
+	Source code on GitHub	Zdrojový kód na GitHube
+	{{brand.name}} Website	Web {{brand.name}}
+	{{this.name}} on GitHub	{{this.name}} na GitHube
+	{{this.name}} on freeandiy.freeandy.agency	{{this.name}} na freeandiy.freeandy.agency
+	Community	Komunita

@@ -1,0 +1,265 @@
+diff --git a/crates/ui-egui/src/brand.rs b/crates/ui-egui/src/brand.rs
+index 4c41d080..71833a30 100644
+--- a/crates/ui-egui/src/brand.rs
++++ b/crates/ui-egui/src/brand.rs
+@@ -1,22 +1,15 @@
+-//! The ArtCraft wordmark (first-party trademark, used with permission; see `docs/brand/` and
+-//! AGENTS.md §1.8), decoded once and kept as a texture.
+-
+-const LOGO_LIGHT_INK: &[u8] = include_bytes!("../../../docs/brand/artcraft-logo-white.png");
+-const LOGO_DARK_INK: &[u8] = include_bytes!("../../../docs/brand/artcraft-logo.png");
++//! The FreeANDIY wordmark (`crate::freeandiy`; © Free Andy Agency, not open source), decoded once
++//! and kept as a texture.
+ 
+ /// The wordmark for a dark (`dark = true`) or light UI: light ink on dark themes. Its aspect
+ /// ratio is width / height of the returned texture.
+ pub fn wordmark(ctx: &egui::Context, dark: bool) -> Option<egui::TextureHandle> {
+-    let id = egui::Id::new(("artcraft-wordmark", dark));
++    let id = egui::Id::new(("freeandiy-wordmark", dark));
+     if let Some(t) = ctx.data(|d| d.get_temp::<egui::TextureHandle>(id)) {
+         return Some(t);
+     }
+-    let bytes = if dark { LOGO_LIGHT_INK } else { LOGO_DARK_INK };
+-    let img = image::load_from_memory_with_format(bytes, image::ImageFormat::Png).ok()?;
+-    // Large enough to stay sharp at 2x for the sizes we draw (≤ 320 pt wide).
+-    let img = img.resize(1024, 1024, image::imageops::FilterType::Lanczos3).to_rgba8();
+-    let color = egui::ColorImage::from_rgba_unmultiplied([img.width() as usize, img.height() as usize], img.as_raw());
+-    let tex = ctx.load_texture("artcraft-wordmark", color, egui::TextureOptions::LINEAR);
++    let color = crate::freeandiy::wordmark_image(dark)?;
++    let tex = ctx.load_texture("freeandiy-wordmark", color, egui::TextureOptions::LINEAR);
+     ctx.data_mut(|d| d.insert_temp(id, tex.clone()));
+     Some(tex)
+ }
+diff --git a/crates/ui-egui/src/header.rs b/crates/ui-egui/src/header.rs
+index 5b8f23c8..013bad15 100644
+--- a/crates/ui-egui/src/header.rs
++++ b/crates/ui-egui/src/header.rs
+@@ -120,20 +120,11 @@ pub fn show(app: &mut FilmcraftApp, ui: &mut egui::Ui, rect: Rect) {
+     let wresp = ui.interact(wr, egui::Id::new("hdr-ws-name"), Sense::click());
+     app.auto.add("header.workspaceName", wr, &ws);
+     p.galley_with_override_text_color(pos2(wr.min.x + 4.0, rect.center().y - wg.size().y / 2.0), wg, if wresp.hovered() { t.text } else { t.text_dim });
+-    // Community: a labelled Discord button, always one click away.
++    // The title, between the menus and the workspace name (FreeANDIY: no Discord button here).
+     {
+-        let label = "Discord";
+-        let g = p.layout_no_wrap(label.to_string(), Tokens::ui(12.0), Color32::WHITE);
+-        let w = g.size().x + 34.0;
+-        let r = Rect::from_min_size(pos2(wr.min.x - w - 14.0, rect.center().y - 12.0), vec2(w, 24.0));
+-        let resp = ui.interact(r, egui::Id::new("hdr-discord"), Sense::click()).on_hover_text(tl!("Join the ArtCraft Discord (discord.gg/artcraft)"));
+-        app.auto.add("header.discord", r, "Join the ArtCraft Discord");
+-        ui.painter().rect_filled(r, 12.0, if resp.hovered() { t.accent_hover } else { t.accent });
+-        icons::paint(ui.painter(), Rect::from_center_size(pos2(r.min.x + 14.0, r.center().y), vec2(14.0, 14.0)), Icon::Chat, Color32::WHITE);
+-        ui.painter().galley(pos2(r.min.x + 25.0, r.center().y - g.size().y / 2.0), g, Color32::WHITE);
+         // Localized menus and user titles can be wider than English. Use the actual gap.
+         let left = left_end + 12.0;
+-        let right = r.min.x - 12.0;
++        let right = wr.min.x - 14.0;
+         if right > left + 40.0 {
+             let mut job = egui::text::LayoutJob::simple_singleline(title, Tokens::ui(14.0), t.tab_text_active);
+             job.wrap.max_width = right - left;
+@@ -148,9 +139,6 @@ pub fn show(app: &mut FilmcraftApp, ui: &mut egui::Ui, rect: Rect) {
+             );
+         }
+ 
+-        if resp.clicked() {
+-            crate::links::open(app, ui.ctx(), crate::links::DISCORD);
+-        }
+     }
+     let popup_id = egui::Id::new("workspaces-popup");
+     if ws_resp.clicked() || wresp.clicked() {
+diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
+index cb4a2344..ccdd519e 100644
+--- a/crates/ui-egui/src/lib.rs
++++ b/crates/ui-egui/src/lib.rs
+@@ -37,6 +37,7 @@ pub mod control;
+ pub mod crash;
+ pub mod credits;
+ pub mod dock;
++pub mod freeandiy;
+ mod dock_shared;
+ mod dock_ui;
+ pub mod frames;
+diff --git a/crates/ui-egui/src/links.rs b/crates/ui-egui/src/links.rs
+index 37df98da..efdbb4c9 100644
+--- a/crates/ui-egui/src/links.rs
++++ b/crates/ui-egui/src/links.rs
+@@ -1,13 +1,9 @@
+-//! Community and project links (Help menu, About dialog, header Discord button, Home screen).
+-//!
+-//! FilmCraft is part of the ArtCraft family: the community lives on the ArtCraft Discord, every
+-//! app has a page on the ArtCraft website and a public GitHub repository.
++//! Project links (Help menu, About dialog, Home screen): the website, this app's page and its
++//! public GitHub repository.
+ 
+ /// The app's short name, used in the website and repository URLs.
+ pub const APP: &str = "filmcraft";
+ 
+-/// The ArtCraft community Discord.
+-pub const DISCORD: &str = "https://discord.gg/artcraft";
+ /// The ArtCraft website.
+ pub const WEBSITE: &str = "https://getartcraft.com";
+ /// FilmCraft's page on the ArtCraft website.
+@@ -18,8 +14,7 @@ pub const GITHUB: &str = "https://github.com/storytold/filmcraft";
+ pub const ISSUES: &str = "https://github.com/storytold/filmcraft/issues";
+ 
+ /// (command id, label, url) for every link, in menu order.
+-pub const ALL: [(&str, &str, &str); 5] = [
+-    ("help.discord", "Join the ArtCraft Discord…", DISCORD),
++pub const ALL: [(&str, &str, &str); 4] = [
+     ("help.website", "ArtCraft Website", WEBSITE),
+     ("help.appPage", "FilmCraft on getartcraft.com", APP_PAGE),
+     ("help.github", "FilmCraft on GitHub", GITHUB),
+@@ -125,11 +120,11 @@ mod tests {
+     use super::*;
+ 
+     #[test]
+-    fn urls_follow_the_artcraft_scheme() {
+-        assert_eq!(APP_PAGE, format!("{WEBSITE}/apps/{APP}"));
+-        assert_eq!(GITHUB, format!("https://github.com/storytold/{APP}"));
++    fn urls_are_this_apps_pages() {
++        assert!(APP_PAGE.starts_with(WEBSITE));
++        assert!(GITHUB.starts_with("https://github.com/"));
+         assert!(ALL.iter().all(|(id, _, u)| id.starts_with("help.") && u.starts_with("https://")));
+-        assert_eq!(url_for("help.discord"), Some(DISCORD));
++        assert_eq!(url_for("help.discord"), None);
+         assert_eq!(url_for("help.nope"), None);
+     }
+ 
+diff --git a/crates/ui-egui/src/panels/dialogs.rs b/crates/ui-egui/src/panels/dialogs.rs
+index 8bc23dbc..0ba5cef4 100644
+--- a/crates/ui-egui/src/panels/dialogs.rs
++++ b/crates/ui-egui/src/panels/dialogs.rs
+@@ -444,17 +444,15 @@ fn about(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
+     }
+ }
+ 
+-/// About ▸ About: version, licence and the ArtCraft community links. Joining the Discord is the
+-/// first, accented button.
++/// About ▸ About: version, licence, the project links and the upstream attribution.
+ ///
+-/// Automation ids: `about.discord`, `about.website`, `about.appPage`, `about.github`,
+-/// `about.reportIssue`.
++/// Automation ids: `about.website`, `about.appPage`, `about.github`, `about.reportIssue`.
+ fn about_tab(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
+     use crate::icons::{self, Icon};
+     use crate::links;
+     let t = app.tokens;
+     ui.set_width(380.0);
+-    // ArtCraft wordmark (first-party trademark, docs/brand/).
++    // The FreeANDIY wordmark (`crate::brand`).
+     let (r, _) = ui.allocate_exact_size(egui::vec2(ui.available_width(), 30.0), egui::Sense::hover());
+     crate::brand::paint_wordmark(ui, egui::pos2(r.min.x, r.center().y), 20.0, app.ui.dark);
+     ui.add_space(6.0);
+@@ -489,12 +487,12 @@ fn about_tab(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
+             links::open(app, ui.ctx(), url);
+         }
+     };
+-    link(ui, "discord", Icon::Chat, tl!("Join the ArtCraft Discord"), links::DISCORD, true);
+-    ui.add_space(6.0);
+     link(ui, "website", Icon::Globe, "getartcraft.com", links::WEBSITE, false);
+     link(ui, "appPage", Icon::Globe, tl!("FilmCraft on getartcraft.com"), links::APP_PAGE, false);
+     link(ui, "github", Icon::Code, tl!("Source code on GitHub"), links::GITHUB, false);
+     link(ui, "reportIssue", Icon::Code, tl!("Report an issue"), links::ISSUES, false);
+     ui.add_space(10.0);
+     ui.label(egui::RichText::new(tl!("MIT OR Apache-2.0. Fonts: Inter, Noto Serif and JetBrains Mono (SIL OFL 1.1).")).small().color(t.text_dim));
++    ui.add_space(8.0);
++    crate::freeandiy::about_attribution(ui, &t);
+ }
+diff --git a/crates/ui-egui/src/panels/import_mode.rs b/crates/ui-egui/src/panels/import_mode.rs
+index 2af12cad..260eb9f0 100644
+--- a/crates/ui-egui/src/panels/import_mode.rs
++++ b/crates/ui-egui/src/panels/import_mode.rs
+@@ -46,14 +46,14 @@ pub fn show(app: &mut FilmcraftApp, ui: &mut egui::Ui, rect: Rect) {
+     }
+     let y = recent(app, ui, rect, 90.0 + 150.0 + 36.0);
+     // Community and project links.
+-    // ArtCraft wordmark (first-party trademark, docs/brand/), then the section title.
++    // The FreeANDIY wordmark (`crate::brand`), then the section title.
+     let logo = crate::brand::paint_wordmark(ui, rect.min + vec2(24.0, y), 15.0, app.ui.dark);
+     let tx = logo.map_or(rect.min.x + 24.0, |r| r.max.x + 12.0);
+     ui.painter().text(pos2(tx, rect.min.y + y), Align2::LEFT_CENTER, tl!("Community"), Tokens::semibold(15.0), t.text);
+     let mut x = rect.min.x + 24.0;
+     for (i, (id, label, url)) in crate::links::ALL.iter().take(4).enumerate() {
+         let primary = i == 0;
+-        let label = if primary { tl!("Join us on Discord") } else { crate::i18n::t(label) };
++        let label = crate::i18n::t(label);
+         let g = ui.painter().layout_no_wrap(label.to_string(), Tokens::ui(13.0), t.text);
+         let r = Rect::from_min_size(pos2(x, rect.min.y + y + 18.0), vec2(g.size().x + 44.0, 34.0));
+         let resp = ui.interact(r, egui::Id::new(("imp-link", *id)), Sense::click()).on_hover_text(*url);
+diff --git a/crates/ui-egui/src/theme.rs b/crates/ui-egui/src/theme.rs
+index 21a50012..e86e1206 100644
+--- a/crates/ui-egui/src/theme.rs
++++ b/crates/ui-egui/src/theme.rs
+@@ -241,7 +241,7 @@ impl Tokens {
+             gap: 4.0,
+             tab_h: 32.0,
+         };
+-        match kind {
++        let tokens = match kind {
+             ThemeKind::Dark => dark,
+             ThemeKind::Medium => Tokens {
+                 app_bg: Color32::from_rgb(20, 20, 20),
+@@ -330,7 +330,8 @@ impl Tokens {
+                 tl_ruler_text: Color32::from_rgb(80, 80, 80),
+                 ..dark
+             },
+-        }
++        };
++        crate::freeandiy::tokens(tokens)
+     }
+ 
+     /// Settings ▸ Appearance on top of a theme: the highlight colour (selections, primary buttons,
+@@ -427,6 +428,7 @@ pub fn install(ctx: &egui::Context, t: &Tokens) {
+     fonts.families.entry(FontFamily::Monospace).or_default().insert(0, "jbmono".into());
+     fonts.families.insert(FontFamily::Name("semibold".into()), vec!["inter-semibold".into(), "inter".into()]);
+     fonts.families.insert(FontFamily::Name("medium".into()), vec!["inter-medium".into(), "inter".into()]);
++    crate::freeandiy::ui_fonts(&mut fonts);
+     // Japanese before Chinese: the two share code points, and Japanese text must keep Japanese
+     // glyph forms; Chinese faces still cover the hanzi Japanese fonts lack
+     add_craft_fonts(&mut fonts);
+@@ -496,6 +498,7 @@ pub fn apply_visuals(ctx: &egui::Context, t: &Tokens) {
+     v.widgets.active.fg_stroke = Stroke::new(1.0, t.tab_text_active);
+     v.widgets.open.bg_fill = t.hover;
+     v.widgets.open.weak_bg_fill = t.hover;
++    crate::freeandiy::visuals(&mut v);
+     ctx.set_visuals(v);
+     ctx.global_style_mut(|s| {
+         s.spacing.item_spacing = egui::vec2(6.0, 4.0);
+diff --git a/crates/ui-egui/tests/links_ui.rs b/crates/ui-egui/tests/links_ui.rs
+index 6d05a303..9c2394dc 100644
+--- a/crates/ui-egui/tests/links_ui.rs
++++ b/crates/ui-egui/tests/links_ui.rs
+@@ -1,4 +1,4 @@
+-//! Headless UI test of the community links: Help menu commands, the header Discord button, the
++//! Headless UI test of the project links: Help menu commands, the
+ //! About dialog and the Home (Import) screen.
+ //!
+ //! Set `FILMCRAFT_UI_SNAPSHOT_DIR=<dir>` to also render the window offscreen with wgpu and write
+@@ -90,14 +90,14 @@ fn community_links_everywhere() {
+     for (id, label, _) in links::ALL {
+         assert!(text.contains(id) && text.contains(label), "Help menu lists {id}");
+     }
+-    // Header: the Discord button is always there.
+-    assert_eq!(d.ids("header.discord"), vec!["header.discord".to_string()]);
++    // Header: no Discord button (FreeANDIY has none).
++    assert!(d.ids("header.discord").is_empty());
+     d.snapshot("header");
+-    // About dialog: Discord first, then website, app page, GitHub, issues.
++    // About dialog: website, app page, GitHub, issues.
+     d.ok("engine.execute", json!({"command": "app.about", "params": {}}));
+     d.frames(3);
+     let about = d.ids("about.");
+-    for id in ["about.discord", "about.website", "about.appPage", "about.github", "about.reportIssue"] {
++    for id in ["about.website", "about.appPage", "about.github", "about.reportIssue"] {
+         assert!(about.iter().any(|a| a == id), "{id} in {about:?}");
+     }
+     d.snapshot("about");
+@@ -108,7 +108,7 @@ fn community_links_everywhere() {
+     d.ok("engine.execute", json!({"command": "mode.import", "params": {}}));
+     d.frames(3);
+     let home = d.ids("import.link.");
+-    for id in ["import.link.discord", "import.link.website", "import.link.appPage", "import.link.github"] {
++    for id in ["import.link.website", "import.link.appPage", "import.link.github", "import.link.reportIssue"] {
+         assert!(home.iter().any(|a| a == id), "{id} in {home:?}");
+     }
+     d.snapshot("home");

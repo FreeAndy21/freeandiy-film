@@ -1,0 +1,35 @@
+diff --git a/apps/filmcraft-cli/Cargo.toml b/apps/filmcraft-cli/Cargo.toml
+index 218b7f7d..6254fad9 100644
+--- a/apps/filmcraft-cli/Cargo.toml
++++ b/apps/filmcraft-cli/Cargo.toml
+@@ -8,8 +8,9 @@ license.workspace = true
+ [lints]
+ workspace = true
+ 
++# FreeANDIY: the executable carries the product name; the package keeps upstream's.
+ [[bin]]
+-name = "filmcraft-cli"
++name = "freeandiy-film-cli"
+ path = "src/main.rs"
+ 
+ [features]
+diff --git a/apps/filmcraft/Cargo.toml b/apps/filmcraft/Cargo.toml
+index 3ae35e6c..3cbf3380 100644
+--- a/apps/filmcraft/Cargo.toml
++++ b/apps/filmcraft/Cargo.toml
+@@ -4,9 +4,14 @@ description = "FilmCraft desktop app"
+ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+-default-run = "filmcraft"
++default-run = "freeandiy-film"
+ build = "build.rs"
+ 
++# FreeANDIY: the executable carries the product name; the package keeps upstream's.
++[[bin]]
++name = "freeandiy-film"
++path = "src/main.rs"
++
+ [lints]
+ workspace = true
+ 

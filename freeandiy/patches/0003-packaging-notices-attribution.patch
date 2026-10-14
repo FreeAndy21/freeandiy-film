@@ -1,0 +1,148 @@
+diff --git a/ATTRIBUTION.md b/ATTRIBUTION.md
+index 2b69cb02..c017e0aa 100644
+--- a/ATTRIBUTION.md
++++ b/ATTRIBUTION.md
+@@ -32,23 +32,6 @@ iconography, images or other Adobe assets; open licences only; every asset attri
+ | `docs/images/filmcraft-scopes.png` | FilmCraft contributors | Original work: FilmCraft UI crop (scopes of a Charade (1963) frame, public domain) | MIT OR Apache-2.0 |
+ | `docs/images/filmcraft-effects.png` | FilmCraft contributors | Original work: FilmCraft screenshot crop; NASA Earth Views (US Government work, public domain) | MIT OR Apache-2.0; footage public domain |
+ | `docs/images/filmcraft-timeline.png` | FilmCraft contributors | Original work: FilmCraft UI crop; thumbnails from Night of the Living Dead (1968) and Carnival of Souls (1962), CC0 Chopin waveform | MIT OR Apache-2.0; film frames public domain |
+-| `assets/app-icon/filmcraft.svg` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; canonical vector | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `packaging/macos/dmg/background.svg` | @XusBadia | Original work: FilmCraft macOS DMG window background, derived from the FilmCraft app icon (`assets/app-icon/filmcraft.svg`); rendered to `background.tiff` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) |
+-| `packaging/macos/dmg/background.tiff` | @XusBadia | Rendered from `packaging/macos/dmg/background.svg` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) |
+-| `assets/app-icon/filmcraft-small.svg` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; lighter vector | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/filmcraft-1024.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; 1024 px render | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/filmcraft-macos-512.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; macOS runtime Dock icon (512 px) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/filmcraft.icns` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; macOS .icns | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/filmcraft.ico` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Windows .ico (16-256 px) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 16 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 24 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 32 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 48 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 64 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 128 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 256 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 512 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+-| `assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme scalable | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+ | `apps/filmcraft-web/web/favicon.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; 128 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+ 
+ ## Golden test images
+@@ -140,14 +123,6 @@ remove them (AGENTS.md §1.8).
+ 
+ | File | Author | Source | Licence |
+ |---|---|---|---|
+-| `docs/brand/artcraft-logo-white.png` | ArtCraft Team | Original work: first-party ArtCraft brand mark (ArtCraft wordmark, light ink for dark backgrounds) | ArtCraft trademark, not open source; `docs/brand/LICENSE-brand.txt` (not MIT/Apache) |
+-| `docs/brand/artcraft-logo-white.svg` | ArtCraft Team | Original work: first-party ArtCraft brand mark (ArtCraft wordmark, light ink for dark backgrounds) | ArtCraft trademark, not open source; `docs/brand/LICENSE-brand.txt` (not MIT/Apache) |
+-| `docs/brand/artcraft-logo.png` | ArtCraft Team | Original work: first-party ArtCraft brand mark (ArtCraft wordmark (symbol + "ARTCRAFT"), dark ink for light backgrounds) | ArtCraft trademark, not open source; `docs/brand/LICENSE-brand.txt` (not MIT/Apache) |
+-| `docs/brand/artcraft-logo.svg` | ArtCraft Team | Original work: first-party ArtCraft brand mark (ArtCraft wordmark (symbol + "ARTCRAFT"), dark ink for light backgrounds) | ArtCraft trademark, not open source; `docs/brand/LICENSE-brand.txt` (not MIT/Apache) |
+-| `docs/brand/artcraft-mark-black.png` | ArtCraft Team | Original work: first-party ArtCraft brand mark (ArtCraft symbol ("A" mark), black) | ArtCraft trademark, not open source; `docs/brand/LICENSE-brand.txt` (not MIT/Apache) |
+-| `docs/brand/artcraft-mark-black.svg` | ArtCraft Team | Original work: first-party ArtCraft brand mark (ArtCraft symbol ("A" mark), black) | ArtCraft trademark, not open source; `docs/brand/LICENSE-brand.txt` (not MIT/Apache) |
+-| `docs/brand/artcraft-mark.png` | ArtCraft Team | Original work: first-party ArtCraft brand mark (ArtCraft symbol ("A" mark), blue) | ArtCraft trademark, not open source; `docs/brand/LICENSE-brand.txt` (not MIT/Apache) |
+-| `docs/brand/artcraft-mark.svg` | ArtCraft Team | Original work: first-party ArtCraft brand mark (ArtCraft symbol ("A" mark), blue) | ArtCraft trademark, not open source; `docs/brand/LICENSE-brand.txt` (not MIT/Apache) |
+ 
+ ## Third-party source code
+ 
+@@ -168,3 +143,17 @@ SHA-256 (`crates/speech/src/models.rs`, `docs/transcripts.md`).
+ | Asset | Author | Source | Licence |
+ |---|---|---|---|
+ | Whisper tiny / base / small speech-recognition weights (`model.safetensors`, `config.json`, `generation_config.json`, `tokenizer.json`) | OpenAI | `https://huggingface.co/openai/whisper-{tiny,base,small}` (revisions `169d4a43…`, `e37978b9…`, `973afd24…`); weights released with `https://github.com/openai/whisper` | MIT (weights and code, github.com/openai/whisper); the Hugging Face conversion is labelled Apache-2.0 |
++
++## FreeANDIY (added by the FreeANDIY fork)
++
++Every file under these directories is covered by its row.
++
++| Asset | Author | Source | Licence | Notes |
++|---|---|---|---|---|
++| `freeandiy/assets/fonts/` | IBM Corp. (IBM Plex Sans, IBM Plex Mono); The Roboto Project Authors (Roboto) | https://github.com/IBM/plex, https://github.com/googlefonts/roboto-3-classic | OFL-1.1 (`freeandiy/assets/fonts/OFL-*.txt`) | UI fonts (Plex) and long-form text (Roboto) |
++| `freeandiy/assets/brand/` | Free Andy Agency | Original work | **Not open source**: © Free Andy Agency, all rights reserved (`freeandiy/assets/brand/LICENSE-brand.txt`) | FreeANDIY and Free Andy Agency names, the angel Andy, lettering, logotypes, seal |
++| `freeandiy/assets/icons/` | Free Andy Agency | Original work, generated by `tools/make_icons.py` (FreeANDIY meta repository) | **Not open source**: © Free Andy Agency (`freeandiy/assets/brand/LICENSE-brand.txt`) | App icons |
++| `freeandiy/assets/dmg/` | Free Andy Agency | Original work, generated by `freeandiy/tools/make_dmg.py` | **Not open source**: © Free Andy Agency (`freeandiy/assets/brand/LICENSE-brand.txt`) | DMG background and layout |
++| `assets/app-icon/` | Free Andy Agency | Copied from `freeandiy/assets/icons/film/` by the rebrand | **Not open source**: © Free Andy Agency (`freeandiy/assets/brand/LICENSE-brand.txt`) | App icon |
++| `packaging/macos/dmg/` | Free Andy Agency | Copied from `freeandiy/assets/dmg/` by the rebrand | **Not open source**: © Free Andy Agency (`freeandiy/assets/brand/LICENSE-brand.txt`) | DMG background and layout |
++| `crates/ui-egui/src/i18n/sk.tsv` | Free Andy Agency | Original work: clean-room Slovak interface translations (FreeANDIY) | MIT OR Apache-2.0 | Slovak UI strings |
+diff --git a/NOTICE b/NOTICE
+index 221a0acc..231f0f16 100644
+--- a/NOTICE
++++ b/NOTICE
+@@ -3,9 +3,9 @@ Copyright (c) 2026 ArtCraft Team and the FilmCraft contributors.
+ Licensed under the MIT License or the Apache License, Version 2.0, at your option
+ (LICENSE-MIT, LICENSE-APACHE).
+ 
+-The ArtCraft name, wordmark and logos in docs/brand/ are trademarks of the ArtCraft Team. They are
+-not open source and are not covered by the license above; their terms are in
+-docs/brand/LICENSE-brand.txt.
++The ArtCraft name, wordmark and logos are trademarks of the ArtCraft Team. They are not open
++source and are not covered by the license above. As their terms require of modified versions,
++the FreeANDIY fork has removed them (upstream's docs/brand/ directory is not part of this tree).
+ 
+ Third-party material
+ 
+@@ -19,3 +19,26 @@ Builds made with craft-fonts (CRAFT_FONTS_DIR; all official releases) also embed
+ https://github.com/storytold/craft-fonts/blob/main/ATTRIBUTION.md (BIZ UDPGothic, Shippori Mincho,
+ BIZ UDMincho) — OFL-1.1. Their licence texts ship with the packages as OFL-<family>.txt.
+ Public-domain film and NASA frames and CC0 music shown in README screenshots (docs/images/) — public domain / CC0-1.0. See ATTRIBUTION.md.
++
++-------------------------------------------------------------------------------------------------
++FreeANDIY Film
++
++FreeANDIY Film is a modified version of FilmCraft, made by Free Andy Agency
++(https://freeandy.agency). FreeANDIY is not affiliated with, sponsored or endorsed by the ArtCraft
++Team.
++Modifications Copyright (c) 2026 Free Andy Agency, licensed like FilmCraft under the MIT License
++or the Apache License, Version 2.0, at your option.
++
++Changed files (Apache-2.0 section 4(b)): FreeANDIY's changes are generated from the freeandiy/
++directory by freeandiy/tools/rebrand: the patches in freeandiy/patches/, the text rules in
++freeandiy/rules.toml and the files copied from freeandiy/. Every file that differs from upstream
++FilmCraft is listed by `git diff upstream-main main --stat`, and CHANGELOG-FREEANDIY.md
++summarises the changes. New files carry a "Modified-by: FreeANDIY" header where their format
++allows comments.
++
++The FreeANDIY and Free Andy Agency names, the angel Andy, the lettering, logotypes, seal and app
++icons are protected by copyright, are the property of Free Andy Agency and are NOT covered by
++the licenses above; see freeandiy/assets/brand/LICENSE-brand.txt.
++
++FreeANDIY bundles IBM Plex Sans and IBM Plex Mono (IBM Corp.) and Roboto (The Roboto Project
++Authors) under the SIL Open Font License 1.1; see freeandiy/assets/fonts/OFL-*.txt.
+diff --git a/packaging/env.sh b/packaging/env.sh
+index d227a71a..8199159d 100644
+--- a/packaging/env.sh
++++ b/packaging/env.sh
+@@ -48,9 +48,12 @@ warn() {
+ # craft-fonts fonts the build embedded (only when built with CRAFT_FONTS_DIR).
+ copy_docs() {
+   local dest="$1" f
+-  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT; do
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md CHANGELOG-FREEANDIY.md; do
+     if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
+   done
++  # FreeANDIY: the bundled UI fonts' licences and the brand terms (Apache-2.0 4(d): NOTICE above).
++  cp "$ROOT"/freeandiy/assets/fonts/OFL-*.txt "$dest/"
++  cp "$ROOT/freeandiy/assets/brand/LICENSE-brand.txt" "$dest/LICENSE-FreeANDIY-brand.txt"
+   copy_font_licences "$dest"
+ }
+ 
+diff --git a/xtask/src/main.rs b/xtask/src/main.rs
+index 819326fc..4e60b655 100644
+--- a/xtask/src/main.rs
++++ b/xtask/src/main.rs
+@@ -202,12 +202,19 @@ fn is_asset(path: &str) -> bool {
+     std::path::Path::new(path).extension().and_then(|e| e.to_str()).is_some_and(|e| ASSET_EXT.contains(&e.to_ascii_lowercase().as_str()))
+ }
+ 
++/// FreeANDIY: paths the fork owns (its sources, the app icon and DMG art copied from them). They
++/// are attributed in NOTICE's FreeANDIY section and `freeandiy/assets/brand/LICENSE-brand.txt`
++/// (the brand assets are deliberately not open source), not by sidecars.
++fn freeandiy_owned(path: &str) -> bool {
++    ["freeandiy/", "assets/app-icon/", "packaging/macos/dmg/"].iter().any(|p| path.starts_with(p))
++}
++
+ fn assets() -> Result<(), String> {
+     let files = repo_files()?;
+     let index = std::fs::read_to_string("ATTRIBUTION.md").map_err(|e| format!("ATTRIBUTION.md: {e}"))?;
+     let mut errors = Vec::new();
+     let mut n = 0;
+-    for f in files.iter().filter(|f| is_asset(f)) {
++    for f in files.iter().filter(|f| is_asset(f) && !freeandiy_owned(f)) {
+         n += 1;
+         let lower = f.to_ascii_lowercase();
+         if lower.contains("adobe") || lower.contains("premiere") {
