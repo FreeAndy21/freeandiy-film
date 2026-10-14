@@ -252,7 +252,7 @@ exclude = ["**/tests/**"]
 find = "ArtCraft"
 replace = "{{brand.name}}"
 skip_comments = ["//"]
-min = 2
+min = 1
 
 # ---------------------------------------------------------------------------------------------
 # The product name in the UI, messages, translations, packaging and the web page.
