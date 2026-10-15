@@ -704,7 +704,7 @@ mod tests {
         ctx.fonts_mut(|fonts| {
             let defs = fonts.definitions().clone();
             assert_eq!(defs.font_data.keys().filter(|k| k.starts_with("craft:")).count(), n);
-            assert_eq!(defs.families[&FontFamily::Proportional].first().map(String::as_str), Some("inter"));
+            assert_eq!(defs.families[&FontFamily::Proportional].first().map(String::as_str), Some("plex"));
             assert_eq!(defs.families[&FontFamily::Monospace].first().map(String::as_str), Some("jbmono"));
             assert!(fonts.has_glyph(&FontId::new(13.0, FontFamily::Proportional), 'A'));
             if n == 0 {
