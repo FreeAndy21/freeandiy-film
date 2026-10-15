@@ -514,3 +514,17 @@ include = ["crates/export/src/raster.rs"]
 find = 'hd[160..169].copy_from_slice(b"FreeANDIY Film");'
 replace = 'hd[160..174].copy_from_slice(b"FreeANDIY Film");'
 min = 1
+
+[[replace]]
+name = "settings: the default highlight is FreeANDIY's stamp rose (the themes' own accent)"
+include = ["crates/engine/src/settings.rs"]
+find = 'pub const DEFAULT_HIGHLIGHT: &str = "#2f6bdf";'
+replace = 'pub const DEFAULT_HIGHLIGHT: &str = "{{colors.rose}}";'
+min = 1
+
+[[replace]]
+name = "font test: the first UI face is IBM Plex Sans (crate::freeandiy::ui_fonts), upstream's Inter right behind"
+include = ["crates/ui-egui/src/theme.rs"]
+find = 'defs.families[&FontFamily::Proportional].first().map(String::as_str), Some("inter"));'
+replace = 'defs.families[&FontFamily::Proportional].first().map(String::as_str), Some("plex"));'
+min = 1
