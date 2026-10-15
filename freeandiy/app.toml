@@ -16,8 +16,9 @@ ci_tests = "true"
 
 # Extra arguments after the test filter. Upstream's own desktop-file test fails upstream too: the
 # packaged entry gained a MimeType line that the generated one doesn't write yet; the Spanish
-# graphics-notice test expects a wording the Spanish catalog no longer has (FreeAndy21/freeandiy#1).
-test_args = "-- --skip dev_icon::tests::desktop_file_matches_the_packaged_fields --skip the_notice_follows_the_interface_language"
+# graphics-notice test expects a wording the Spanish catalog no longer has; the Alt-marquee test fails
+# on upstream's own tree too (FreeAndy21/freeandiy#1).
+test_args = "-- --skip dev_icon::tests::desktop_file_matches_the_packaged_fields --skip the_notice_follows_the_interface_language --skip alt_box_selects_only_video_and_delete_keeps_linked_audio"
 
 [check]
 # check-branding.sh: extra allowed strings (regex) and Rust paths where the upstream name may stay
