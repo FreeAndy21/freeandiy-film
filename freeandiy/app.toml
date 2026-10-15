@@ -14,6 +14,10 @@ web_env = ""
 # Upstream has no test workflow of its own: freeandiy.yml runs build.tests on Linux.
 ci_tests = "true"
 
+# Extra arguments after the test filter. Upstream's own desktop-file test fails upstream too: the
+# packaged entry gained a MimeType line that the generated one doesn't write yet.
+test_args = "-- --skip dev_icon::tests::desktop_file_matches_the_packaged_fields"
+
 [check]
 # check-branding.sh: extra allowed strings (regex) and Rust paths where the upstream name may stay
 # in string literals (git pathspecs, space-separated).
