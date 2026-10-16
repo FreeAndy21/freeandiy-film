@@ -35,6 +35,7 @@
 
     <Feature Id="Main" Title="FreeANDIY Film" Level="1">
       <ComponentGroupRef Id="FilmcraftFiles" />
+      <ComponentGroupRef Id="FreeandiyNotices" />
     </Feature>
   </Package>
 
@@ -53,6 +54,13 @@
       <Component Id="FilmcraftCli">
         <File Id="FilmcraftCliExe" Source="$(var.BinDir)\freeandiy-film-cli.exe" KeyPath="yes" />
       </Component>
+    </ComponentGroup>
+  </Fragment>
+  <!-- FreeANDIY: licences, NOTICE, attribution, font licences and brand terms (Apache-2.0 4(d)),
+       staged by package.ps1. -->
+  <Fragment>
+    <ComponentGroup Id="FreeandiyNotices" Directory="INSTALLFOLDER">
+      <Files Include="$(var.NoticesDir)\*" />
     </ComponentGroup>
   </Fragment>
 </Wix>
